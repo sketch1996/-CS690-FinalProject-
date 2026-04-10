@@ -1,0 +1,16 @@
+digraph {
+  rankdir=TB;
+  node [shape=box, fontname="Arial"];
+  edge [fontname="Arial"];
+  Start [shape=ellipse];
+  End [shape=ellipse];
+
+  Start -> "Open Log Issue screen" -> "Enter device search criteria" -> "System searches device records" -> Decision;
+  Decision [shape=diamond, label="Device found?"];
+
+  Decision -> "Enter issue details" [label="Yes"];
+  Decision -> "Show 'Device not found'" [label="No"];
+
+  "Enter issue details" -> "Save issue log" -> "Show confirmation" -> End;
+  "Show 'Device not found'" -> "Return to Log Issue screen" -> End;
+}
