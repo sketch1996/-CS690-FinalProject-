@@ -1,0 +1,24 @@
+digraph {
+  rankdir=LR;
+  graph [fontsize=20, labelloc=t, label="Domain Model - Device Tracker"];
+  node [shape=record, fontname="Arial"];
+
+  Device [label="{Device|Id : int\lName : string\lType : DeviceType\lStatus : DeviceStatus\lSystemName : string\lLocation : string\lIpAddress : string\lAssignedTo : string\lCreatedAt : datetime\lUpdatedAt : datetime\l}"];
+  Issue [label="{Issue|Id : int\lDeviceId : int\lTitle : string\lDescription : string\lSeverity : IssueSeverity\lIsResolved : bool\lCreatedAt : datetime\lResolvedAt : datetime\l}"];
+  Assignment [label="{Assignment|Id : int\lDeviceId : int\lTechnicianId : int\lTaskDescription : string\lAssignedDate : datetime\lStatus : string\l}"];
+  Technician [label="{Technician|Id : int\lName : string\lRole : string\lContactInfo : string\l}"];
+  SystemGroup [label="{SystemGroup|Id : int\lName : string\lDescription : string\l}"];
+
+  DeviceType [shape=note, label="<<enum>>\nDeviceType"];
+  DeviceStatus [shape=note, label="<<enum>>\nDeviceStatus"];
+  IssueSeverity [shape=note, label="<<enum>>\nIssueSeverity"];
+
+  SystemGroup -> Device [label="1 to many"];
+  Device -> Issue [label="1 to many"];
+  Device -> Assignment [label="1 to many"];
+  Technician -> Assignment [label="1 to many"];
+
+  Device -> DeviceType [style=dashed];
+  Device -> DeviceStatus [style=dashed];
+  Issue -> IssueSeverity [style=dashed];
+}

@@ -1,0 +1,16 @@
+digraph {
+  rankdir=TB;
+  graph [fontsize=20, labelloc=t, label="Activity Diagram - Generate Report"];
+  node [shape=box, fontname="Arial"];
+  edge [fontname="Arial"];
+
+  Start [shape=ellipse];
+  End [shape=ellipse];
+  Decision [shape=diamond, label="Criteria valid?"];
+
+  Start -> "Open Generate Report screen" -> "Select report criteria" -> "System validates criteria" -> Decision;
+  Decision -> "Generate report" [label="Yes"];
+  Decision -> "Show validation error" [label="No"];
+  "Generate report" -> "Display / export report" -> End;
+  "Show validation error" -> "Return to Generate Report screen" -> End;
+}

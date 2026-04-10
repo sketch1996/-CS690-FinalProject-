@@ -1,0 +1,16 @@
+digraph {
+  rankdir=TB;
+  graph [fontsize=20, labelloc=t, label="Activity Diagram - Search / View Device"];
+  node [shape=box, fontname="Arial"];
+  edge [fontname="Arial"];
+
+  Start [shape=ellipse];
+  End [shape=ellipse];
+  Decision [shape=diamond, label="Device found?"];
+
+  Start -> "Open Search Device screen" -> "Enter device ID / name / IP" -> "System searches device records" -> Decision;
+  Decision -> "Display device details" [label="Yes"];
+  Decision -> "Show 'Device not found'" [label="No"];
+  "Display device details" -> End;
+  "Show 'Device not found'" -> "Prompt: Search again or Add Device" -> End;
+}

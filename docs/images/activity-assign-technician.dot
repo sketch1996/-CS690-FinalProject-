@@ -1,0 +1,16 @@
+digraph {
+  rankdir=TB;
+  graph [fontsize=20, labelloc=t, label="Activity Diagram - Assign Technician"];
+  node [shape=box, fontname="Arial"];
+  edge [fontname="Arial"];
+
+  Start [shape=ellipse];
+  End [shape=ellipse];
+  Decision [shape=diamond, label="Device found?"];
+
+  Start -> "Open Assign Technician screen" -> "Enter device search criteria" -> "System searches device records" -> Decision;
+  Decision -> "Select technician" [label="Yes"];
+  Decision -> "Show 'Device not found'" [label="No"];
+  "Select technician" -> "Save technician assignment" -> "Show confirmation" -> End;
+  "Show 'Device not found'" -> "Return to Assign Technician screen" -> End;
+}

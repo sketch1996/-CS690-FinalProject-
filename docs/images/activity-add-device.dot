@@ -1,0 +1,16 @@
+digraph {
+  rankdir=TB;
+  graph [fontsize=20, labelloc=t, label="Activity Diagram - Add Device"];
+  node [shape=box, fontname="Arial"];
+  edge [fontname="Arial"];
+
+  Start [shape=ellipse];
+  End [shape=ellipse];
+  Decision [shape=diamond, label="Input valid?"];
+
+  Start -> "Open Add Device screen" -> "Enter device details" -> "System validates input" -> Decision;
+  Decision -> "Save new device record" [label="Yes"];
+  Decision -> "Show validation error" [label="No"];
+  "Save new device record" -> "Show success message" -> End;
+  "Show validation error" -> "Return to Add Device form" -> End;
+}
