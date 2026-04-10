@@ -1,0 +1,16 @@
+digraph {
+rankdir=TB;
+node [shape=box];
+
+Start [shape=ellipse];
+End [shape=ellipse];
+
+Start -> "Open Search Screen" -> "Enter Device Info" -> "Search Records" -> Decision;
+Decision [shape=diamond label="Device Found?"];
+
+Decision -> "Display Device Info" [label="Yes"];
+Decision -> "Show Not Found" [label="No"];
+
+"Display Device Info" -> End;
+"Show Not Found" -> "Retry or Add Device" -> End;
+}

@@ -1,0 +1,16 @@
+digraph {
+rankdir=TB;
+node [shape=box];
+
+Start [shape=ellipse];
+End [shape=ellipse];
+
+Start -> "Search Device" -> Decision;
+Decision [shape=diamond label="Device Found?"];
+
+Decision -> "Assign Technician" [label="Yes"];
+Decision -> "Show Not Found" [label="No"];
+
+"Assign Technician" -> "Save Assignment" -> End;
+"Show Not Found" -> End;
+}
